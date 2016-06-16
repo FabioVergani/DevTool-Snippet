@@ -12,3 +12,25 @@
 	};
  };
 })(window);
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/CSSRule
+
+goog.cssom.CssRuleType = {
+UNKNOWN_RULE	0
+  STYLE: 1,
+ CHARSET_RULE: 2,
+  IMPORT: 3,
+  MEDIA: 4,
+  FONT_FACE: 5,
+  PAGE: 6,
+
+CSSRule.KEYFRAMES_RULE	7	CSSKeyframesRule
+CSSRule.KEYFRAME_RULE	8	CSSKeyframeRule
+
+  NAMESPACE:10
+CSSRule.NAMESPACE_RULE	10	CSSNamespaceRule
+CSSRule.COUNTER_STYLE_RULE	11	CSSCounterStyleRule
+CSSRule.SUPPORTS_RULE	12	CSSSupportsRule
+
+};
