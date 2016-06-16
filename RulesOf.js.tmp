@@ -1,0 +1,14 @@
+(function(win){
+ const $=win;
+ for(let i=0,m=$.document.styleSheets,l=m.length,sheet;i<l;++i){
+	sheet=m[i];
+	if(sheet.disabled!==true){
+	 for(let i=0,m=sheet.cssRules,l=m.length,rule,type;i<l;++i){
+		rule=m[i];
+		type=rule.type;
+		if(type===5){console.log(rule);}
+
+	 };
+	};
+ };
+})(window);
