@@ -1,19 +1,39 @@
 (function(win){
- const $=win;
- for(let i=0,m=$.document.styleSheets,l=m.length,sheet;i<l;++i){
-	sheet=m[i];
-	if(sheet.disabled!==true){
-	 for(let i=0,m=sheet.cssRules,l=m.length,rule,type;i<l;++i){
-		rule=m[i];
-		type=rule.type;
-		if(type===5){console.log(rule);}
+ const $=win, $d=$.document,
 
+ $console=$.console,
+ log=$console.log.bind($console),
+ logInfo=$console.info.bind($console),
+ logObject=$console.dir.bind($console),
+ logGroup=$console.group.bind($console),
+ logGroupEnd=$console.groupEnd.bind($console),
+ logGroupCollapsed=$console.groupCollapsed.bind($console);
+	
+ $console.clear();
+ log('styleSheets:');
+ const allSheets=$d.styleSheets;
+ let sheet,sheetIndex=0;
+ for(const sheets=allSheets,totalSheets=allSheets.length;sheetIndex<totalSheets;++sheetIndex){
+	sheet=sheets[sheetIndex];  
+	logGroup(sheetIndex);
+	logObject(sheet);
+	if(sheet.disabled!==true){
+	 logGroupCollapsed('Rules');
+	 const allRules=sheet.cssRules;
+	 let rule,ruleIndex=0;
+	 for(const rules=allRules,totalRules=allRules.length;ruleIndex<totalRules;++ruleIndex){
+		rule=rules[ruleIndex];
+		logObject(rule);
 	 };
+	 logGroupEnd();
+	 logInfo('processed rules:',ruleIndex);
 	};
+	logGroupEnd();
  };
+ logInfo('processed sheets:',sheetIndex);
 })(window);
 
-
+/*
 https://developer.mozilla.org/en-US/docs/Web/API/CSSRule
 
 goog.cssom.CssRuleType = {
@@ -34,3 +54,4 @@ CSSRule.COUNTER_STYLE_RULE	11	CSSCounterStyleRule
 CSSRule.SUPPORTS_RULE	12	CSSSupportsRule
 
 };
+*/
